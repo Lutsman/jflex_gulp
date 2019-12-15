@@ -1,0 +1,47 @@
+/*reset colors styles*/
+
+footer, .mm-menu, .m-panel {
+
+  .t_white, .t_grey, .t_dark-grey, .t_black, .t_dark-black, .t_orange, .t_dark-orange, .t_blue, .t_red {
+    color: inherit;
+
+    a {
+      color: inherit;
+
+      &:hover {
+        color: inherit;
+      }
+      &.active {
+        text-decoration: inherit;
+        color: inherit;
+      }
+    }
+  }
+
+  .bg_white, .bg-white, .bg_light-grey, .bg-light-grey, .bg_grey, .bg-grey, .bg_dark-grey, .bg-dark-grey, .bg_black, .bg-black,
+  .bg_orange, .bg-orange, .bg_dark-orange, .bg-dark-orange, .bg_blue, .bg-blue, .bg_red, .bg-red {
+    background: transparent;
+  }
+
+  .brd {
+
+    &.s_white, &.s_light-grey, &.s_grey, &.s_dark-grey, &.s_black, &.s_orange, &.s_dark-orange, &.s_blue, &.s_red {
+      border-color: transparent;
+    }
+  }
+
+  .btn {
+
+    &.s_black, &.s_orange, &.s_blue, &s_red {
+      color: inherit !important;
+      text-shadow: none;
+      background: transparent;
+      @include box-shadow(none);
+
+      &:hover {
+        background: transparent;
+        @include box-shadow(none);
+      }
+    }
+  }
+}

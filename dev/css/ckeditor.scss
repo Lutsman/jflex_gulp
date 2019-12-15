@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+@import "mixin";
+@import "mixin-static";
+@import "variables";
+
+@import "jflex_base/base";
+@import "jflex_base/grid-system";
+@import "jflex_base/fonts-styles";
+@import "jflex_base/colors-styles";
+@import "jflex_base/buttons-inputs-form-styles";
+@import "jflex_base/sets-classes";
+@import "jflex_base/layout-spaces";
+
+/* ckeditor additional styling */
+
+.cke_editable {
+
+  ul, ol {
+    padding-left: 15px;
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
+  .contextual-links-wrapper {
+    display:none !important;
+  }
+  .col {
+    border:1px dotted #ddd;
+  }
+  .row {
+    padding:5px;
+    margin:0 0 10px;
+    border:1px solid #ddd;
+  }
+  .retina {
+    display:block !important;
+    position:relative !important;
+    opacity:1 !important;
+    @include transform(scale(0.5));
+  }
+}
+.cke_contents {
+  background-color: #eee;
+}

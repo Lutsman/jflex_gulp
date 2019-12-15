@@ -1,0 +1,145 @@
+/* comment form */
+
+.comments {
+
+  h2,
+  .form-item-homepage,
+  .form-item-mail .description,
+  .comment h3[property="dc:title"],
+  .permalink
+  /*&.wide.reply .links.inline*/ {
+    display: none;
+  }
+
+  label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #777;
+  }
+
+/*  &.wide {
+
+    &.reply .content .field-name-comment-body {
+      padding-bottom: 20px;
+    }
+
+    .comment {
+      position: relative;
+      margin: 0 0 20px;
+
+      .content {
+        padding-left: 250px;
+      }
+      .links.inline {
+        position: absolute;
+        left: 250px;
+        bottom: 0;
+        z-index: 1;
+        padding: 20px 30px;
+        margin: 0;
+      }
+      .submitted {
+        position: absolute;
+        left: 0;
+        top: 22px;
+        width: 230px;
+        margin: 0;
+      }
+    }
+    .content .field-name-comment-body {
+      padding-bottom: 70px;
+    }
+    .field-name-comment-body {
+      margin: 0;
+    }
+  }*/
+
+  .comment-form {
+    margin: 50px 0 20px;
+  }
+  .submitted {
+    font-size: 12px;
+    color: #777;
+  }
+  .form-item-name {
+    padding-right: 20px;
+  }
+  .form-text {
+    width: 100%;
+  }
+  .form-type-textfield {
+    float: left;
+    width: 50%;
+  }
+  .field-widget-text-textarea {
+    display: inline-block;
+    width: 100%;
+    margin: 20px 0 15px !important;
+    clear: both;
+  }
+  .content .field-name-comment-body {
+    position: relative;
+    padding: 25px 30px;
+    line-height: 20px;
+    font-size: 14px;
+    background-color: #f5f5f5;
+
+    &:before {
+      content: '\e7d8';
+      display: block;
+      position: absolute;
+      left: -15px;
+      top: 17px;
+      font-family: $iconsFont;
+      font-size: 24px;
+      color: #f5f5f5;
+    }
+  }
+  .comment .links.inline {
+    display: inherit;
+    margin: 0 0 20px;
+
+    li {
+      display: inline-block;
+      padding: 0;
+    }
+    a {
+      font-size: 12px;
+    }
+
+    .comment-reply a {
+      display: inline-block;
+      position: relative;
+      padding-left: 20px;
+
+      &:before {
+        content: '\e628';
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-family: $iconsFont;
+        font-size: 14px;
+        color: #ddd;
+        cursor: default;
+      }
+    }
+  }
+  .no-comments {
+    position: relative;
+    padding-bottom: 50px;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+
+    &:before {
+      content: '\e629';
+      position: relative;
+      top: 8px;
+      margin-right: 10px;
+      font-family: $iconsFont;
+      font-size: 28px;
+      color: #aaa;
+      cursor: default;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+}

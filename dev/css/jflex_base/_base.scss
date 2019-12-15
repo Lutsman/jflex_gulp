@@ -1,0 +1,150 @@
+/* base css */
+
+// Reset
+
+* {
+  padding: 0;
+  margin: 0;
+  @include border-box;
+}
+
+//Main
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: $fontSizeMain;
+  color: $fontColorMain;
+  background-color: #fff;
+}
+
+body, header, footer, div, nav, ul, form {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+footer {
+  position: relative;
+  z-index: 0;
+
+  &:hover {
+    z-index: 2;
+  }
+}
+
+ol {
+  padding: 0 0 0 15px;
+}
+
+ul.menu,
+ul.menu li,
+p,
+.item-list ul li {
+  padding: 0;
+  margin: 0;
+  text-align: inherit;
+}
+
+ul.menu li {
+  list-style: none;
+}
+
+a {
+  text-decoration: underline;
+  outline: none;
+  @include transition(all 0.2s ease);
+
+  &:hover {
+    text-decoration: none;
+  }
+  &.active {
+    cursor: default;
+  }
+}
+
+table {
+  border-collapse: inherit;
+}
+
+form {
+  position: relative;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+ul li.leaf,
+ul li.expanded,
+.form-item,
+.form-actions,
+.item-list ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+img {
+  vertical-align: bottom;
+  max-width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.d-hide {
+  display: none !important;
+}
+
+.retina {
+  position: absolute;
+  @include opacity(0);
+}
+
+.retina-show {
+  position: relative;
+  @include opacity(1);
+}
+
+.fullpage {
+  position: relative;
+  z-index: 1;
+}
+
+.fulldata {
+  /*display: table-row;*/
+  position: relative;
+  z-index: 6;
+/*  height: 100%;*/
+}
+
+.hold {
+  width: 100%;
+  max-width: 1280px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+/*
+.hold-pad {
+  padding: 0 5px;
+}*/

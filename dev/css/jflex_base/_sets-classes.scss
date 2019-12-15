@@ -1,0 +1,317 @@
+/* sets classes */
+
+hr {
+  height: 1px;
+  margin: 20px 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+
+  &.s_white {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  &.s_grey {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.btn-panel {
+  display: inline-block;
+  vertical-align: top;
+  padding: 15px 20px;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid;
+  @include border-radius(5px);
+}
+
+/* aligns */
+
+.top {
+  vertical-align: top;
+
+  .col {
+    vertical-align: top;
+  }
+}
+
+.middle {
+  vertical-align: middle;
+
+  .col {
+    vertical-align: middle;
+  }
+}
+
+.bottom {
+  vertical-align: bottom;
+
+  .col {
+    vertical-align: bottom;
+  }
+}
+
+.centrify {
+  margin-left: auto!important;
+  margin-right: auto!important;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.fnone {
+  float: none !important;
+}
+
+.inl {
+  display: inline;
+}
+
+.inlb {
+  display: inline-block;
+}
+.bl {
+  display: block;
+}
+
+.over {
+  position: relative;
+  z-index: 999;
+}
+
+.clear {
+  clear: both;
+}
+
+.overflow {
+  overflow: hidden;
+}
+
+.rel {
+  position: relative;
+}
+.abs {
+  position: absolute;
+}
+.fix {
+  position: fixed;
+}
+
+.icon {
+  position:relative;
+
+  &:before,
+  &:after {
+    position:absolute;
+    left:0;
+    top:0;
+    font-family: $iconsFont;
+  }
+}
+
+.icon_bg {
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+  }
+}
+
+
+
+/* backgrounds */
+
+.bg-to {
+  background-repeat: no-repeat;
+}
+
+.bg-left {
+  background-position: left center;
+}
+.bg-right {
+  background-position: right center;
+}
+.bg-left-25 {
+  background-position: 25% center;
+}
+.bg-left-50 {
+  background-position: 50% center;
+}
+.bg-center {
+  background-position: center;
+}
+.bg-top {
+  background-position: top;
+}
+.bg-bottom {
+  background-position: bottom;
+}
+
+.cover {
+  background-size: cover;
+}
+.contain {
+  background-size: contain;
+}
+.bg_v_100p {
+  background-size: auto 100%;
+}
+.bg_h_100p {
+  background-size: 100% auto;
+}
+
+/* borders styling */
+
+.brd {
+  border: 1px solid;
+
+  &.t {
+    border: none;
+    border-top: 1px solid;
+  }
+  &.b {
+    border: none;
+    border-bottom: 1px solid;
+  }
+  &.l {
+    border: none;
+    border-left: 1px solid;
+  }
+  &.r {
+    border: none;
+    border-right: 1px solid;
+  }
+
+  &.s_5 {
+    border-width:5px;
+  }
+  &.s_10 {
+    border-width:10px;
+  }
+  &.dashed {
+    text-decoration: none;
+    border-style: dashed;
+  }
+}
+
+.dashed {
+  text-decoration: none;
+  border-bottom-width: 1px;
+  border-bottom-style:  dashed;
+}
+
+/* border radius */
+
+.circle {
+  @include border-radius(500px);
+}
+
+.r-3 {
+  @include border-radius(3px);
+}
+.r-5 {
+  @include border-radius(5px);
+}
+.r-10 {
+  @include border-radius(10px);
+}
+
+/* shadows */
+
+.shadow {
+  @include box-shadow(0 3px 15px rgba(0, 0, 0, 0.15));
+}
+.shadow-b {
+  @include box-shadow(0 13px 10px rgba(0, 0, 0, 0.13));
+}
+.shadow-s {
+  @include box-shadow(0 10px 10px rgba(0, 0, 0, 0.10));
+}
+
+
+/* opacity */
+
+.opacity0 {
+  @include opacity(0);
+}
+.opacity10 {
+  @include opacity(0.1);
+}
+.opacity20 {
+  @include opacity(0.2);
+}
+.opacity30 {
+  @include opacity(0.3);
+}
+.opacity40 {
+  @include opacity(0.4);
+}
+.opacity50 {
+  @include opacity(0.5);
+}
+.opacity60 {
+  @include opacity(0.6);
+}
+.opacity70 {
+  @include opacity(0.7);
+}
+.opacity80 {
+  @include opacity(0.8);
+}
+.opacity90 {
+  @include opacity(0.9);
+}
+.opacity100 {
+  @include opacity(1);
+}
+
+/* CSS3 animations */
+
+.trans-01 {
+  @include transition(all 0.1s ease);
+}
+.trans-02 {
+  @include transition(all 0.2s ease);
+}
+.trans-03 {
+  @include transition(all 0.3s ease);
+}
+.trans-04 {
+  @include transition(all 0.4s ease);
+}
+.trans-05 {
+  @include transition(all 0.5s ease);
+}
+
+/*for table*/
+
+.noborder {
+
+  > tbody {
+    border: none!important;
+    table-layout: inherit!important;
+
+    > tr > td {
+      border: none!important;
+      table-layout: inherit!important;
+    }
+  }
+}
+
+.nobg {
+
+  > tbody > tr {
+    background-color: transparent !important;
+  }
+}
+
+.valign-t td {
+  vertical-align: top;
+}
+

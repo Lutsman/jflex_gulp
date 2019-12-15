@@ -1,0 +1,641 @@
+/* online consult */
+
+.block-j-crm {
+
+  .block-title {
+    display: none;
+  }
+}
+
+.j_crm-chat {
+
+  .ajax-progress-throbber {
+    display: none !important;
+  }
+
+  .typing {
+    font-style: italic;
+    color: $grey;
+  }
+}
+
+.j_crm-chat--button-wrap {
+  position: fixed;
+  bottom: 0;
+  right: 70px;
+  z-index: 99;
+  width: 320px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 22px;
+  color: $white;
+  cursor: pointer;
+  @include box-shadow(0 6px 30px rgba(0, 0, 0, 0.25));
+  @include transition(transform 0.6s ease-in-out);
+
+  &::before {
+    content: '\e90f';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    line-height: inherit;
+    font-family: $iconsFont;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    @include transition(all 0.4s ease-in-out);
+  }
+
+  .comment-count {
+    display: block;
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    z-index: 5;
+    min-width: 15px;
+    height: 15px;
+    line-height: 15px;
+    padding: 0 2px;
+    font-size: 10px;
+    text-align: center;
+    background-color: $red;
+    @include border-radius(50%);
+  }
+
+  .support-chat__title {
+    padding-right: 50px;
+    padding-left: 20px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  &.j_crm-chat--button-circle {
+    right: 15px;
+    bottom: 80px;
+    width: 65px;
+    height: 65px;
+    line-height: 65px;
+    font-size: 28px;
+    text-align: center;
+    @include border-radius(50%);
+
+    &::before {
+      position: static;
+      background-color: transparent;
+    }
+
+    &:hover {
+      @include transform(scale(1.05));
+
+      &::before {
+        @include transform(scale(1.2));
+      }
+    }
+
+    .comment-count {
+      right: 2px;
+      top: 2px;
+      min-width: 18px;
+      height: 18px;
+      line-height: 18px;
+      padding: 0 5px;
+    }
+
+    .support-chat__title {
+      display: none;
+    }
+  }
+}
+
+.j_crm-chat--content-wrap {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 70px;
+  z-index: 101;
+  width: 320px;
+  max-height: 100vh;
+  overflow: hidden;
+  overflow-y: auto !important;
+  @include box-shadow(0 6px 30px rgba(0, 0, 0, 0.25));
+  background-color: $white;
+}
+
+.operator-avatar {
+  margin-bottom: 10px;
+
+  img {
+    width: 60px;
+    height: 60px;
+    @include border-radius(50%);
+  }
+}
+
+.operator-name {
+  font-family: $gothamProMed;
+}
+
+.operator-name, .operator-departament, .operator-info  {
+  font-size: 11px;
+  cursor: default;
+}
+
+.btn_file-open {
+  position: absolute;
+  top: 50%;
+  right: 60px;
+  width: 20px;
+  height: 23px;
+  @include transform(translate3d(0, -50%, 0));
+  cursor: pointer;
+
+  &::before {
+    content: '\e64f';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: $iconsFont;
+    font-size: 20px;
+    color: #ccc;
+    @include transition(all 0.2s ease-in-out);
+  }
+
+  &:hover::before {
+    color: $grey;
+  }
+}
+
+.message-file {
+  overflow: hidden;
+
+  input[type=file], input[type=submit], .jax-new-content, .description {
+    display: none;
+  }
+
+  .form-type-managed-file {
+    margin-bottom: 0 !important;
+  }
+
+  .file {
+    padding: 15px 20px 15px 40px;
+    color: $grey;
+    background-color: $lightGrey;
+
+    a {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  .file-size {
+    display: none;
+  }
+}
+
+.message-submit {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 30px;
+  height: 34px;
+  @include transform(translate3d(0, -50%, 0));
+
+  &::before {
+    content: '\e934';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: $iconsFont;
+    font-size: 30px;
+    color: $blue;
+    background-color: $white;
+    @include border-radius(50%);
+    @include transition(all 0.2s ease-in-out);
+  }
+
+  &:hover::before {
+    @include opacity(0.9);
+  }
+
+  input[type=submit] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 0;
+    width: 30px;
+    height: 34px;
+    overflow: hidden;
+    padding: 0;
+    background: transparent;
+    @include box-shadow(none);
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background: transparent;
+      @include box-shadow(none);
+    }
+  }
+}
+
+.message-sent {
+
+  .icon-sent {
+    font-size: 40px;
+    color: #ccc;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .message {
+    color: $fontColorDescription;
+  }
+}
+
+.support-chat__message {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+
+  textarea {
+    height: 20px;
+    line-height: 20px;
+    padding: 0;
+    background-color: #f5f5f5;
+    border: none;
+    outline: none;
+    resize: none;
+    @include box-sizing(content-box);
+  }
+
+  .grippie, .filter-wrapper, .cke_top, .cke_bottom, .ckeditor_links {
+    display: none !important;
+  }
+
+  .message-top {
+    position: relative;
+    padding: 25px 100px 25px 20px;
+    background-color: #f5f5f5;
+  }
+
+  .form-item.form-type-textarea {
+    margin-bottom: 0;
+  }
+
+  .comments-close {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    background-color: $white;
+
+    input[type=submit] {
+      display: inline-block;
+      height: 28px;
+      line-height: 26px;
+      font-family: $gothamProReg;
+      font-size: 12px;
+      color: $fontColorDescription;
+      background: transparent;
+      border: 1px solid #ddd;
+      @include box-shadow(none);
+
+      &:hover {
+        border-color: #ccc;
+      }
+    }
+  }
+
+  .cke {
+    border: none;
+    @include box-shadow(none);
+  }
+
+  .cke_contents {
+    width: 100%;
+    height: 40px !important;
+  }
+
+  .cke_editable {
+    height: 40px;
+    line-height: 20px;
+    overflow: hidden;
+    overflow-y: auto;
+    padding: 20px 60px 20px 20px;
+    background-color: #f5f5f5;
+  }
+}
+
+.support-chat__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.support-chat__close {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+
+  &::before {
+    content: '\e117';
+    display: inline-block;
+    line-height: inherit;
+    font-family: $iconsFont;
+    @include transition(opacity 0.2s ease-in-out);
+    @include opacity(0.5);
+  }
+
+  &:hover::before {
+    @include opacity(1);
+  }
+}
+
+.support-chat__description {
+  font-family: $gothamProLight;
+  font-size: 12px;
+  text-align: center;
+  cursor: default;
+}
+
+.support-chat__operator {
+
+  .operator-avatar {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .operator-name, .operator-departament, .operator-info {
+    float: left;
+    max-width: calc(100% - 70px);
+    margin-top: 10px;
+  }
+}
+
+.support-chat__operator_list {
+  text-align: center;
+
+  .operator-item {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 30%;
+    min-width: 80px;
+    padding: 0 10px;
+    margin-bottom: 35px;
+  }
+}
+
+.support-chat__header {
+  position: relative;
+  line-height: 30px;
+  padding: 0 30px;
+  margin: 0 -20px 20px;
+  font-family: $gothamProMed;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: default;
+}
+
+.support-chat__content {
+  position: relative;
+  padding-bottom: 70px;
+
+  form, .contextual-links-region {
+    position: static;
+  }
+
+  div.contextual-links-wrapper {
+    display: none !important;
+   /* top: auto;
+    right: 25px;
+    bottom: 115px;*/
+  }
+}
+
+.support-chat__top-block {
+  padding: 0 20px 20px;
+  color: $white;
+}
+
+.support-chat__body {
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 20px;
+  font-size: 12px;
+
+  input[type=email], input[type=password], input[type=text],
+  textarea {
+    font-size: 12px;
+  }
+
+  input[type=email], input[type=password], input[type=text] {
+    height: 34px;
+    line-height: 34px;
+    font-size: 12px;
+  }
+
+  label, .comment-form label {
+    display: none;
+  }
+
+  .select2-container {
+    width: 100% !important;
+
+    .select2-choice {
+      height: 34px;
+      line-height: 32px;
+      color: $darkGrey !important;
+      border-color: #ccc;
+
+      .select2-arrow b {
+        color: #999;
+      }
+    }
+  }
+
+  .form-item {
+    margin-bottom: 10px;
+  }
+  .form-type-select {
+    margin-bottom: 30px;
+  }
+
+  .j-crm-chat-form-offline {
+    text-align: center;
+
+    input[type=submit] {
+      display: inline-block;
+      height: 28px;
+      line-height: 26px;
+      font-size: 12px;
+      color: $fontColorDescription;
+      background: transparent;
+      border: 1px solid #ddd;
+      @include box-shadow(none);
+
+      &:hover {
+        border-color: #ccc;
+      }
+    }
+  }
+
+  .file {
+    display: block;
+    position: relative;
+
+    &::before {
+      content: '\e64f';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      font-family: $iconsFont;
+      font-size: 14px;
+      color: $grey;
+      @include transform(translate3d(0, -50%, 0));
+    }
+
+    img {
+      display: none;
+    }
+  }
+
+}
+
+.wrap_comments-online {
+  padding-bottom: 160px;
+
+  .field-label, .links {
+    display: none !important;
+  }
+
+  .form-type-checkbox label.option {
+    line-height: 12px;
+    color: $grey;
+
+    &::before {
+      line-height: 16px;
+      margin-top: -8px;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+
+  .content__wrap {
+    max-width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    @include border-radius(3px);
+
+    a {
+      color: inherit;
+    }
+  }
+
+  .comment-operator .content__wrap {
+    float: left;
+    color: $darkGrey;
+    background-color: $lightGrey;
+  }
+
+  .comment-author .content__wrap {
+    float: right;
+    color: $white;
+    background-color: $blue;
+  }
+
+  > div > .field-body {
+    float: right;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: $white;
+    background-color: $blue;
+    @include border-radius(3px);
+  }
+}
+
+.support-chat__comments {
+
+  h3, .user-picture, .submitted, .top-line {
+    display: none;
+  }
+
+  .comment-form {
+    padding-top: 0;
+    border: none;
+  }
+  .comment {
+    /*padding-bottom: 20px;*/
+  }
+
+  .content__wrap .file {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 20px;
+
+    &::before {
+      left: 0;
+      color: inherit;
+    }
+  }
+}
+
+.ajax-comments-nodejs-new {
+  background-color: transparent !important;
+}
+
+
+@media screen and (max-width: 959px) {
+
+  .j_crm-chat--content-wrap {
+    right: auto;
+    left: 0;
+    width: 100%;
+    max-height: calc(100% - 50px);
+  }
+
+  .j_crm-chat--button-wrap {
+    right: auto;
+    left: 0;
+    width: calc(100% - 50px);
+
+    &.j_crm-chat--button-circle {
+      right: auto;
+      bottom: 20px;
+      left: 50%;
+      @include transform(translate3d(-50%, 0, 0));
+
+      &:hover {
+        @include transform(translate3d(-50%, 0, 0) scale(1.05));
+      }
+    }
+  }
+  .support-chat__operator_list {
+    display: none;
+  }
+}

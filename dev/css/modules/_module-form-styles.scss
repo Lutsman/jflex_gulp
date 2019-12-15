@@ -1,0 +1,181 @@
+/*form styles*/
+
+/*submit button form styles*/
+
+.form_btn_black {
+
+  input[type=submit] {
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+    @include linearGradient(#333, $black);
+    @include box-shadow(0 -2px 0 0 #000 inset);
+
+    &:hover {
+      @include linearGradient(#444, #333);
+      @include box-shadow(0 -2px 0 0 #222 inset);
+    }
+  }
+}
+
+.form_btn_orange {
+
+  input[type=submit] {
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+    @include linearGradient($orange, $darkOrange);
+    @include box-shadow(0 -2px 0 0 #ff6200 inset);
+
+    &:hover {
+      @include linearGradient(#ffb700, #ff8c19);
+      @include box-shadow(0 -2px 0 0 #ff6e13 inset);
+    }
+  }
+}
+
+.form_btn_blue {
+
+  input[type=submit] {
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+    @include linearGradient($blue, #2d6b81);
+    @include box-shadow(0 -2px 0 0 #135c77 inset);
+
+    &:hover {
+      @include linearGradient(#2f8fb1, #316e84);
+      @include box-shadow(0 -2px 0 0 #16617c inset);
+    }
+  }
+}
+
+.form_btn_red {
+
+  input[type=submit] {
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+    @include linearGradient(#d81f44, $red);
+    @include box-shadow(0 -2px 0 0 #a90a29 inset);
+
+    &:hover {
+      @include linearGradient(#de2b4f, #ca1538);
+      @include box-shadow(0 -2px 0 0 #a90a29 inset);
+    }
+  }
+}
+
+
+/*webform positioning*/
+
+/*submit on input-field*/
+.form_wbf_single_field {
+
+  input:not([type=submit]) {
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 110px 0 10px;
+    margin-bottom: 0;
+  }
+  input[type=submit] {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    width: 100px;
+    height: 28px;
+    line-height: 26px;
+    padding: 0 10px;
+    margin: 0;
+    font-size: 13px;
+  }
+  .form-item {
+    margin-bottom: 0;
+  }
+  .form-actions {
+    margin-top: 0;
+  }
+}
+
+/*inputs (3) position in one row, submit separate*/
+.form_wbf_inline_field {
+  margin-left: -10px;
+  margin-right: -10px;
+
+  label {
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-align: left;
+  }
+
+  input:not([type=submit]) {
+    width: 100%;
+  }
+  .form-item {
+    float: left;
+    width: 33.33333%;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-bottom: 15px;
+  }
+  .form-actions {
+    float: left;
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
+  }
+}
+
+/*inputs position in two col, submit separate*/
+.form_wbf_col2 {
+  margin-left: -10px;
+  margin-right: -10px;
+
+  label {
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-align: left;
+  }
+
+  input:not([type=submit]) {
+    width: 100%;
+  }
+  .form-item {
+    float: left;
+    width: 50%;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-bottom: 15px;
+  }
+  .form-actions {
+    float: left;
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 20px;
+  }
+}
+
+
+/*submit position center*/
+.form_wbf_submit_center {
+
+  input[type=submit] {
+    margin: 0 auto;
+  }
+}
+
+/*label position center*/
+.form_wbf_label_center {
+
+  label {
+    text-align: center;
+  }
+}
+
+
+/*form-item full width - add on .form-item*/
+.form_wbf_field_full {
+
+  &.form-item {
+    width: 100%;
+  }
+}

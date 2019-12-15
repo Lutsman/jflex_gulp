@@ -1,0 +1,40 @@
+/* font family settings */
+
+@font-face {
+font-family: 'gothamproreg';
+src: url('gothaproreg-webfont.eot');
+src: url('gothaproreg-webfont.eot?#iefix') format('embedded-opentype'),
+url('gothaproreg-webfont.woff') format('woff'),
+url('gothaproreg-webfont.woff2') format('woff2'),
+url('gothaproreg-webfont.ttf') format('truetype');
+}
+
+
+@font-face {
+font-family: 'gothampromed';
+src: url('gothapromed-webfont.eot');
+src: url('gothapromed-webfont.eot?#iefix') format('embedded-opentype'),
+url('gothapromed-webfont.woff') format('woff'),
+url('gothapromed-webfont.woff2') format('woff2'),
+url('gothapromed-webfont.ttf') format('truetype');
+}
+
+
+@font-face {
+font-family: 'gothamprobold';
+src: url('gothaprobol-webfont.eot');
+src: url('gothaprobol-webfont.eot?#iefix') format('embedded-opentype'),
+url('gothaprobol-webfont.woff') format('woff'),
+url('gothaprobol-webfont.woff2') format('woff2'),
+url('gothaprobol-webfont.ttf') format('truetype');
+}
+
+
+@font-face {
+font-family: 'gothamprolight';
+src: url('gothaprolig-webfont.eot');
+src: url('gothaprolig-webfont.eot?#iefix') format('embedded-opentype'),
+url('gothaprolig-webfont.woff') format('woff'),
+url('gothaprolig-webfont.woff2') format('woff2'),
+url('gothaprolig-webfont.ttf') format('truetype');
+}

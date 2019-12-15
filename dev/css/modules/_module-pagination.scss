@@ -1,0 +1,54 @@
+/* pagination */
+
+.pager {
+  font-family: $gothamProMed;
+  font-size: 14px;
+  font-weight: normal;
+  text-decoration: none;
+
+  li {
+    display: inline-block;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 !important;
+    line-height: 40px;
+    text-align: center !important;
+    background-color: #eee;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    @include border-radius(2px);
+    @include transition(background-color 0.1s ease);
+
+    &:hover {
+      background-color: #ddd;
+    }
+
+    a,
+    &.pager-ellipsis {
+      padding: 7px 12px;
+    }
+  }
+  a {
+    font-family: $gothamProMed;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  .pager-next,
+  .pager-last,
+  .pager-previous,
+  .pager-first {
+    display: none !important;
+  }
+
+  .pager-current {
+    color: #444;
+    font-weight: normal;
+    background-color: #ddd;
+    cursor: default;
+  }
+}

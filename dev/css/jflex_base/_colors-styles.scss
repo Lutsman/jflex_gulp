@@ -1,0 +1,324 @@
+/* content color styling */
+
+/* text colors */
+
+.t_white {
+  color: $white;
+
+  a {
+    color: $white;
+
+    &:hover {
+      color: darken($white, 20%);
+    }
+    &.active {
+      text-decoration: none;
+      color: darken($white, 10%);
+    }
+  }
+}
+.t_grey {
+  color: $grey;
+
+  a {
+    color: $grey;
+
+    &:hover {
+      color: darken($grey, 20%);
+    }
+    &.active {
+      text-decoration: none;
+      color: darken($grey, 10%);
+    }
+  }
+}
+.t_dark-grey {
+  color: $darkGrey;
+
+  a {
+    color: $darkGrey;
+
+    &:hover {
+      color: darken($darkGrey, 20%);
+    }
+    &.active {
+      text-decoration: none;
+      color: darken($darkGrey, 10%);
+    }
+  }
+}
+.t_black {
+  color: $black;
+
+  a {
+    color: $black;
+
+    &:hover {
+      color: darken($black, 20%);
+    }
+    &.active {
+      text-decoration: none;
+      color: darken($black, 10%);
+    }
+  }
+}
+.t_dark-black {
+  color: $darkBlack;
+
+  a {
+    color: $darkBlack;
+
+    &:hover {
+      color: darken($darkBlack, 20%);
+    }
+    &.active {
+      text-decoration: none;
+      color: darken($darkBlack, 10%);
+    }
+  }
+}
+.t_orange {
+  color: $orange;
+
+  a {
+    color: $orange;
+
+    &:hover {
+      color: darken($orange, 20%);
+    }
+    &.active {
+      text-decoration: none;
+      color: darken($orange, 10%);
+    }
+  }
+}
+.t_dark-orange {
+  color: $darkOrange;
+
+  a {
+    color: $darkOrange;
+
+    &:hover {
+      color: darken($darkOrange, 20%);
+    }
+    &.active {
+      text-decoration: none;
+      color: darken($darkOrange, 10%);
+    }
+  }
+}
+.t_blue {
+  color: $blue;
+
+  a {
+    color: $blue;
+
+    &:hover {
+      color: darken($blue, 10%);
+    }
+    &.active {
+      text-decoration: none;
+      color: darken($blue, 5%);
+    }
+  }
+}
+.t_red {
+  color: $red;
+
+  a {
+    color: $red;
+
+    &:hover {
+      color: darken($red, 20%);
+    }
+    &.active {
+      text-decoration: none;
+      color: darken($red, 10%);
+    }
+  }
+}
+
+
+/*icon colors*/
+
+.i_white::before {
+  color: $white;
+}
+.i_grey::before  {
+  color: $grey;
+}
+.i_dark-grey::before  {
+  color: $darkGrey;
+}
+.i_black::before  {
+  color: $black;
+}
+.i_dark-black::before  {
+  color: $darkBlack;
+}
+.i_orange::before  {
+  color: $orange;
+}
+.i_dark-orange::before  {
+  color: $darkOrange;
+}
+.i_blue::before {
+  color: $blue;
+}
+.i_red::before  {
+  color: $red;
+}
+
+/* background colors */
+
+.bg_white, .bg-white {
+  background-color: $white;
+}
+.bg_light-grey, .bg-light-grey {
+  background-color: $lightGrey;
+}
+.bg_grey, .bg-grey {
+  background-color: $grey;
+}
+.bg_dark-grey, .bg-dark-grey {
+  background-color: $darkGrey;
+}
+.bg_black, .bg-black {
+  background-color: $black;
+}
+.bg_orange, .bg-orange {
+  background-color: $orange;
+}
+.bg_dark-orange, .bg-dark-orange {
+  background-color: $darkOrange;
+}
+.bg_blue, .bg-blue {
+  background-color: $blue;
+}
+.bg_red, .bg-red {
+  background-color: $red;
+}
+
+/* border colors */
+
+.brd {
+
+  &.s_white {
+    border-color: $white;
+  }
+  &.s_light-grey {
+    border-color: $lightGrey;
+  }
+  &.s_grey {
+    border-color: $grey;
+  }
+  &.s_dark-grey {
+    border-color: $darkGrey;
+  }
+  &.s_black {
+    border-color: $black;
+  }
+  &.s_orange {
+    border-color: $orange;
+  }
+  &.s_dark-orange {
+    border-color: $darkOrange;
+  }
+  &.s_blue {
+    border-color: $blue;
+  }
+  &.s_red {
+    border-color: $red;
+  }
+}
+
+/* button, gradient, progress bars colors */
+
+.btn,
+input[type="submit"] {
+  @include linearGradient(#e5e5e5, #d5d5d5);
+
+  &:hover {
+    @include linearGradient(#d5d5d5, #b3b3b3);
+  }
+}
+
+.j_progress.s_grey,
+.j_bar.s_grey {
+  @include linearGradient(#e5e5e5, #d5d5d5);
+}
+
+.btn.s_black {
+  color: #fff!important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  @include linearGradient(#333, $black);
+  @include box-shadow(0 -2px 0 0 #000 inset);
+
+  &:hover {
+    @include linearGradient(#444, #333);
+    @include box-shadow(0 -2px 0 0 #222 inset);
+  }
+}
+.j_progress.s_black, .j_bar.s_black {
+  color: #fff!important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  @include linearGradient(#333, $black);
+  @include box-shadow(0 -2px 0 0 #000 inset);
+}
+
+.btn.s_orange {
+  color: #fff!important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  @include linearGradient($orange, $darkOrange);
+  @include box-shadow(0 -2px 0 0 #ff6200 inset);
+
+  &:hover {
+    @include linearGradient(#ffb700, #ff8c19);
+    @include box-shadow(0 -2px 0 0 #ff6e13 inset);
+  }
+}
+.j_progress.s_orange,
+.j_bar.s_orange {
+  color: #fff!important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  @include linearGradient($orange, $darkOrange);
+  @include box-shadow(0 -2px 0 0 #ff6200 inset);
+}
+
+.btn.s_blue {
+  color: #fff !important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  @include linearGradient($blue, #2d6b81);
+  @include box-shadow(0 -2px 0 0 #135c77 inset);
+
+  &:hover {
+    /*color: #fff !important;*/
+    @include linearGradient(#2f8fb1, #316e84);
+    @include box-shadow(0 -2px 0 0 #16617c inset);
+  }
+}
+.j_progress.s_blue,
+.j_bar.s_blue {
+  color: #fff !important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  @include linearGradient($blue, #2d6b81);
+  @include box-shadow(0 -2px 0 0 #135c77 inset);
+}
+
+.btn.s_red {
+  color: #fff !important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  @include linearGradient(#d81f44, $red);
+  @include box-shadow(0 -2px 0 0 #a90a29 inset);
+
+  &:hover {
+    @include linearGradient(#de2b4f, #ca1538);
+    @include box-shadow(0 -2px 0 0 #a90a29 inset);
+  }
+}
+.j_progress.s_red, .j_bar.s_red {
+  color: #fff !important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  @include linearGradient(#d81f44, $red);
+  @include box-shadow(0 -2px 0 0 #a90a29 inset);
+}

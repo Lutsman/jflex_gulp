@@ -1,0 +1,76 @@
+; $Id: jflex_admin.info,v 2.0 2017/09/30 00:00:00 goba Exp $
+name = jFlex Admin
+description = jFlex Admin 2.0 + framework 3.0
+version = Version 2.0
+core = 7.x
+engine = phptemplate
+base theme  = jflex
+
+
+; Regions
+regions[language]       = Language
+regions[search]         = Search
+regions[slideshow]      = Slide show
+regions[content_top]    = Content Top
+regions[leftside]       = Left side
+regions[filters]        = Left side Filters
+regions[content]        = Content
+regions[content_bottom] = Content Bottom
+;regions[checkoutcart]   = Checkout cart
+;regions[subinfo]        = Subinfo blocks
+;regions[best_sellers]    = Best sellers
+;regions[social_share]    = Social Share
+;regions[site_info]       = Site info
+;regions[for_customers]   = For customers
+;regions[bottom_banner]   = Bottom banner
+;regions[payments]       = Payments
+;regions[product_relation] = Product Relation
+
+; Blocks.
+regions[tel]            = Telephone
+regions[tel_first]      = Telephone (first)
+regions[openhours]      = Open Hours
+regions[cityselect]     = City Select
+regions[cart]           = Cart
+regions[coupon]         = Coupon discount
+regions[infoblocks]     = Info blocks
+;regions[address]        = Address
+;regions[email]          = Email
+; Product.
+regions[product_social] = Social links (product)
+regions[product_promo]  = Promo Info (product)
+
+; Menu
+regions[menu_corp]      = Corporate section menu
+regions[menu_user]      = User menu
+;regions[menu_user_mobile] = User menu (mobile)
+regions[menu_catalogshop] = Catalog shop menu
+regions[menu_visitors]  = Menu Visitors
+regions[menu_adminflex] = Admin menu Flex operations
+regions[menu_adminflex_add] = Admin menu Flex additionals
+regions[admin_footermenu] = Admin menu Footer
+;regions[menu_main]      = Main menu
+;regions[menu_sub]       = Sub menu
+;regions[menu_site]      = Site menu
+
+; Bottom
+regions[footer]         = Footer
+;regions[footer_social]  = Social links in footer
+;regions[footer_contacts]= Contact links in footer
+;regions[footer_address] = Address links in footer
+regions[bottom]         = Page bottom
+regions[capture]        = Capture
+regions[hidden]         = Hidden
+regions[counters]       = Counters
+;regions[payments]       = Payments
+;regions[subscribe]      = Subscribe
+;regions[copyright]      = Copyright
+
+
+
+; Adding general fonts for template
+stylesheets[all][] = css/flex-admin.css
+
+scripts[] = js/admin.js
+
+

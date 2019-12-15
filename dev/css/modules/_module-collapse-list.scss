@@ -1,0 +1,41 @@
+.collapse_list {
+
+  .item {
+    padding-top: 25px;
+    padding-left: 40px;
+    border-bottom: 1px solid #ddd;
+
+    .title, > a {
+      display: inline-block;
+      position: relative;
+      margin-bottom: 25px;
+      color: $fontColorDescription;
+      text-decoration: none;
+      border-bottom: 1px dashed $fontColorDescription;
+      cursor: pointer;
+
+      &::before {
+        content: '\e65e';
+        position: absolute;
+        top: 0;
+        left: -40px;
+        line-height: inherit;
+        font-family: $iconsFont;
+        font-size: inherit;
+      }
+
+      &.et-active {
+        color: $darkGrey;
+        border-bottom-color: $darkGrey;
+
+        &::before {
+          content: '\e65d';
+          color: $grey;
+        }
+      }
+    }
+    .data {
+      margin-bottom: 25px;
+    }
+  }
+}

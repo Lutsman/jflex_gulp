@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Slider</title>
+  <link rel="stylesheet" href="../fonts/icons/icons.css">
+  <link rel="stylesheet" href="../fonts/icons/guide/style.css">
+  <link rel="stylesheet" href="../fonts/gothampro/gothampro.css">
+  <link rel="stylesheet" href="../fonts/gothampro/style.css">
+  <link rel="stylesheet" href="../css/adaptive.css">
+  <link rel="stylesheet" href="../css/mobile.css">
+  <link rel="stylesheet" href="../css/ckeditor.css">
+  <link rel="stylesheet" href="../css/jflex.css">
+  <link rel="stylesheet" href="../css/modules.css">
+  <link rel="stylesheet" href="css/custom-jslider.css">
+  <link rel="stylesheet" href="css/custom-simplebox.css">
+  <style>
+    body {
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+<div>
+  <h2>jPageEventLive вместе с simplebox</h2>
+</div>
+<div class="row">
+  <div class="col w2 ">
+    <p>перезапись приоритетов</p>
+    <p>у первой кнопки таймер показа 1 минута, после 1 минута тишини и дзена</p>
+    <button class="jevent1 mb5">приоритет 1, показ только 1 минуту</button>
+    <button class="jevent2">приоритет 2</button>
+  </div>
+  <div class="col w2 ">
+    <p>показ только в течении текущей сессии, перезагрузи страницу и все закончится</p>
+    <button class="jevent3">только первая сессия</button>
+  </div>
+  <div class="col w2 ">
+    <p>показ только для новых или только для старых пользователей</p>
+    <button class="jevent4 mb5">только для новых пользователей</button>
+    <button class="jevent9 mb5">только для старых пользователей</button>
+    <button class="jevent5 mt10 mb5">стать старым пользователем</button>
+    <button class="jevent6">стать новым пользователем</button>
+  </div>
+  <div class="col w2 ">
+    <p>задаем коллекцию элементов для показа, работает только в simplebox</p>
+    <button class="jevent7">несколько окон</button>
+  </div>
+  <div class="col w2 ">
+    <p>несколько событий, событие на фокус и потерю фокуса</p>
+    <input class="jevent8" type="text"/>
+  </div>
+  <div class="col w2 ">
+    <button class="reset">почистить куки</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col w2 ">
+    <div class="jevent-target1 hide">1</div>
+  </div>
+  <div class="col w2">
+    <div class="jevent-target2 hide">2</div>
+  </div>
+  <div class="col w2">
+    <div class="jevent-target3 hide">3</div>
+  </div>
+  <div class="col w2">
+    <div class="jevent-target4 hide">4</div>
+  </div>
+  <div class="col w2">
+    <div class="jevent-target5 hide">5</div>
+  </div>
+  <div class="col w2">
+    <div class="jevent-target6 hide">6</div>
+  </div>
+</div>
+
+
+<div>
+  <h2>jPageEventLive вместе с jBox</h2>
+</div>
+<div class="row">
+  <div class="col w2 ">
+    <p>перезапись приоритетов</p>
+    <button class="jevent1-jbox mb5">приоритет 1, показ только 1 минуту</button>
+    <button class="jevent2-jbox">приоритет 2</button>
+  </div>
+  <div class="col w2 ">
+    <p>показ только в течении текущей сессии, перезагрузи страницу и все закончится</p>
+    <button class="jevent3-jbox">только первая сессия</button>
+  </div>
+  <div class="col w2 ">
+    <p>показ только для новых или только для старых пользователей</p>
+    <button class="jevent4-jbox mb5">только для новых пользователей</button>
+    <button class="jevent5-jbox mb5">только для старых пользователей</button>
+    <button class="jevent5 mt10 mb5">стать старым пользователем</button>
+    <button class="jevent6">стать новым пользователем</button>
+  </div>
+  <div class="col w2 ">
+    <p>автоплей и вызов сценария с задержкой</p>
+    <button class="jevent6-jbox">вызов с задержкой</button>
+  </div>
+  <div class="col w2 ">
+  </div>
+  <div class="col w2 ">
+    <button class="reset">почистить куки</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col w3">
+    <a class="jbox gallery-product jbox-anchor hide"
+       href="img/slides/946-1.jpg?itok=TrDpTExq">
+      <img id="img-1" width="400" height="400" src="img/slides/946-1.jpg?itok=TrDpTExq"/>
+    </a>
+  </div>
+  <div class="col w3">
+    <form action="post" id="form-1" class="hide">
+      <input type="text">
+      <input type="text">
+      <input type="text">
+      <input type="submit">
+    </form>
+
+  </div>
+  <div class="col w3">
+    <img src="img/panda/panda2.jpg" alt="" class="img-2 hide">
+  </div>
+  <div class="col w3">
+    <img src="img/panda/panda3.jpg" alt="" class="img-3 hide">
+  </div>
+</div>
+
+<script src="../js/jquery.min.js"></script>
+<!--<script src="../js/drupal.js"></script>-->
+<script src="../js/compacttable.js"></script>
+<script src="../js/cookie.js"></script>
+<script src="../js/fancytable.js"></script>
+<script src="../js/floatyclone.js"></script>
+<script src="../js/hoverflow.js"></script>
+<script src="../js/jBox.js"></script>
+<script src="../js/jFlex.js"></script>
+<script src="../js/jquery.countdown.js"></script>
+<script src="../js/jquery.sticky.js"></script>
+<script src="../js/maskform.js"></script>
+<script src="../js/mediaqueries.js"></script>
+<script src="../js/mobile.js"></script>
+<script src="../js/modules.js"></script>
+<script src="../js/rotate.js"></script>
+<script src="../js/scrolledtable.js"></script>
+<script src="../js/tabs.js"></script>
+<script src="../js/jTooltip.js"></script>
+<script src="../js/jquery.swipe.js"></script>
+<script src="../js/jPageEventLive.js"></script>
+<script src="js/jevent-demo.js"></script>
+<script>
+/*  $(document).ready(function () {
+    var $event1 = $('.jevent1');
+    var $event2 = $('.jevent2');
+    var $event3 = $('.jevent3');
+    var $event4 = $('.jevent4');
+    var $event5 = $('.jevent5');
+    var $event6 = $('.jevent6');
+    var $event7 = $('.jevent7');
+    var $reset = $('.reset');
+
+
+    var jeventTarget1 = '.jPageEventLive-target1';
+    var jeventTarget2 = '.jPageEventLive-target2';
+    var jeventTarget3 = '.jPageEventLive-target3';
+    var jeventTarget4 = '.jPageEventLive-target4';
+    var jeventTarget5 = '.jPageEventLive-target5';
+    var jeventTarget6 = '.jPageEventLive-target6';
+
+    $event1.jPageEventLive({
+      target: '.jPageEventLive-target1',
+      event: 'click',
+      showAfter: '0 - 5, 10 - 15'
+    });
+
+    $event2.jPageEventLive({
+      target: '.jPageEventLive-target1',
+      event: 'focus',
+      showAfter: '0 - 5, 10 - 15',
+      priority: 2
+    });
+
+    $event3.jPageEventLive({
+      target: '.jPageEventLive-target2',
+      event: 'click',
+      showAfter: 0
+    });
+
+    $event4.jPageEventLive({
+      target: '.jPageEventLive-target2',
+      event: 'click',
+      showAfter: 0
+    });
+
+
+
+
+  });*/
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+/* user login */
+
+/*#user-login,
+#user-register-form,
+#user-pass,
+form#user-register-form #edit-profile-main {
+  display: none;
+}*/
+
+.user-login,
+.user-register-form,
+.user-pass {
+  max-width: 400px;
+  margin: 0 auto 50px;
+  text-align: left;
+  padding: 30px;
+  background-color: #fff;
+  @include box-shadow(0 2px 10px rgba(0, 0, 0, 0.15));
+
+  label {
+    text-align: left;
+  }
+  input.form-text {
+    max-width: 100%;
+  }
+
+  .form-actions {
+    margin-top: 0;
+  }
+
+  .description {
+    padding: 0;
+    margin: 3px 0 10px;
+    font-size: 11px;
+    background-color: transparent;
+    border: none;
+  }
+  .field-type-text {
+    margin-bottom: 10px;
+  }
+}
+
+.page-user {
+
+  label {
+    margin: 0 0 5px;
+    font-size: 14px;
+  }
+
+  .block-system .form-submit {
+    margin: 10px 0 0;
+  }
+}
+
+.form-item.form-type-ulogin-widget {
+  margin: 0 0 10px;
+}
+
+.page-user-login .tabs-content {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.form-item .description {
+  font-size: 12px !important;
+}

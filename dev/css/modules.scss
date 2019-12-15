@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+@import "mixin";
+@import "mixin-static";
+@import "variables";
+
+@import "modules/module-menu";
+@import "modules/module-progress-bars";
+@import "modules/module-cart-link";
+@import "modules/module-checkout-page";
+@import "modules/module-breadcrumb";
+@import "modules/module-tabs";
+@import "modules/module-comment-form";
+@import "modules/module-newsletter";
+@import "modules/module-global-search";
+@import "modules/module-autocomplete";
+@import "modules/module-city-select";
+@import "modules/module-slick-slider";
+@import "modules/module-views";
+@import "modules/module-pagination";
+@import "modules/module-jbox";
+@import "modules/module-drupal-restyling";
+@import "modules/module-user-login";
+@import "modules/module-jtooltip";
+@import "modules/module-jslidecounter";
+@import "modules/module-select2v3.5.4";
+@import "modules/module-animate";
+@import "modules/module-fixed-menu";
+@import "modules/module-collapse-list";
+@import "modules/module-form-styles";
+@import "modules/module-online-consult";
+@import "modules/module-reset-colors-styles";
+
+/* mini-item teaser in block */
+
+.mini-item.teaser {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+/* tel */
+
+.telline {
+  font-family: $gothamProBold;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+/* ajax loading splash overflow screen */
+/* .apo-show using in views to enable inserting ajax-progress-overlay div */
+
+.loading {
+  background: url('../img/loading.gif') no-repeat center #fff;
+  cursor: wait;
+}
+.ajax-progress-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: wait;
+}
+
+/* page slide up button */
+
+.page-slideup {
+  display: none;
+  position: fixed;
+  bottom: 70px;
+  right: 0;
+  z-index: 50;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  @include border-radius(3px 0 0 3px);
+  @include box-shadow(3px 5px 10px 2px rgba(0, 0, 0, 0.15));
+  cursor: pointer;
+
+  &:after {
+    content: '\e7de';
+    font-family: $iconsFont;
+    font-size: 24px;
+    color: #777;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+}
+

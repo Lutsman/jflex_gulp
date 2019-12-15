@@ -1,0 +1,77 @@
+/* autocomplete, search autocomplete */
+
+.ui-autocomplete {
+  left: 0 !important;
+  font-size: 12px;
+  border: none !important;
+  @include border-radius(0 !important);
+  @include box-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+
+  &.ui-widget-content {
+    float: left;
+    width: 100%;
+    min-width: 100%;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .ui-autocomplete-field-title {
+    font-size: 12px;
+  }
+  .ui-autocomplete-field-name {
+    display: none;
+  }
+  .ui-menu-item {
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+    @include transition(background-color 0.1s ease);
+    cursor: pointer;
+
+    &:hover {
+      background-color: #eee;
+    }
+
+    .ui-autocomplete-fields:hover {
+      background: transparent;
+      border: 0 !important;
+    }
+  }
+  .ui-menu-item-first {
+    background: transparent;
+  }
+  .ui-corner-all {
+    background: transparent !important;
+    border: 0 !important;
+    @include border-radius(0 !important);
+  }
+}
+.ui-autocomplete-field-group {
+  display: none;
+}
+.ui-autocomplete-field-field_image {
+  float: left;
+  margin: 0 10px 0 0;
+}
+.ui-autocomplete-field-model {
+  float: left;
+  color: #777;
+}
+.ui-autocomplete-field-sell_price, .ui-autocomplete-field-term {
+  font-family: $gothamProMed; font-weight:normal;
+}
+.ui-autocomplete-field-sell_price {
+  float: right;
+  position: relative;
+  top: 0;
+  font-size: 12px;
+}
+.ui-autocomplete-field-title {
+  max-height: 30px;
+  padding-right: 70px;
+  margin: 0 0 10px;
+  line-height: 14px;
+  overflow: hidden;
+}

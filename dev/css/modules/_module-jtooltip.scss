@@ -1,0 +1,78 @@
+/* jtooltip */
+
+.jtooltip {
+  position: absolute;
+  z-index: 100000;
+  padding: 5px;
+  font-size: 11px;
+}
+.jtooltip-inner {
+  max-width: 200px;
+  padding: 6px 15px 6px 15px;
+  text-align: center;
+  @include border-radius(3px);
+}
+.jtooltip-arrow {
+  display: block;
+  position: absolute;
+  border: 5px solid transparent;
+}
+
+.jtooltip-b .jtooltip-arrow {
+  top: -5px;
+  border-top-color: transparent !important;
+  border-right-color: transparent !important;
+  border-left-color: transparent !important;
+}
+.jtooltip-t .jtooltip-arrow {
+  bottom: -5px;
+  border-right-color: transparent !important;
+  border-left-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+.jtooltip-l .jtooltip-arrow {
+  right: -5px;
+  border-top-color: transparent !important;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+.jtooltip-r .jtooltip-arrow {
+  left: -5px;
+  border-top-color: transparent !important;
+  border-left-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+
+.js__jtooltip-s_white {
+
+  .jtooltip-inner {
+    color: $black;
+    background-color: $white;
+    @include box-shadow(0 3px 13px rgba(0, 0, 0, 0.25));
+  }
+  .jtooltip-arrow {
+    border-color: $white;
+  }
+}
+
+.js__jtooltip-s_grey {
+
+  .jtooltip-inner {
+    color: $black;
+    background-color: $lightGrey;
+  }
+  .jtooltip-arrow {
+    border-color: $lightGrey;
+  }
+}
+
+.js__jtooltip-s_dark {
+
+  .jtooltip-inner {
+    color: $lightGrey;
+    background-color: $black;
+  }
+  .jtooltip-arrow {
+    border-color: $black;
+  }
+}

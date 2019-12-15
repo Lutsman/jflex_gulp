@@ -1,0 +1,66 @@
+/* city select */
+
+.city-block {
+  position: relative;
+  z-index: 15;
+  padding: 10px 15px;
+  font-size: 12px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.97);
+
+    .cities {
+      display: block;
+    }
+    .item.active {
+      border-bottom-color: transparent;
+    }
+  }
+
+  a,
+  span {
+    display: block;
+    margin: 5px 0;
+    white-space: nowrap;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0;
+      list-style: none;
+    }
+  }
+
+  .item {
+    display: table;
+    position: relative;
+
+    &.active {
+      margin: 0;
+      color: $darkGrey;
+      text-decoration: none;
+      border-bottom: 1px dashed $darkGrey;
+    }
+  }
+  .cities {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    max-width: 700px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.97);
+    @include box-shadow(0 9px 16px rgba(0, 0, 0, 0.1));
+  }
+  .cities-group {
+    float: left;
+    width: 165px;
+    padding: 10px;
+  }
+}

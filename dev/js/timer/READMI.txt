@@ -1,0 +1,72 @@
+!!! переделать timer_date на timer !!!
+
+УСТАНОВКА:
+Подключаем скрипты
+  cookie.js
+  sprintf.js
+  timer.js
+
+Включаем модули
+  date date-popup
+
+Создаем:
+  Обвертку
+    Период события
+  Поля:
+    Таймер 1
+      field_timer_date
+      Pop-up calendar, от-до(обяз.)
+      создать формат отображения даты timestamp (U)
+      description: Даты запуска и отключения таймера.
+    Таймер 2 (индивидуальное)
+      field_timer_date_individ
+      Целое число
+      description: Укажите кол-во дней, в течении которых будет работать таймер.<br>Таймер запускается для пользователя только если он посетит данную страницу.<br><i>(заполнять, если не заполнен первый период!)</i>
+    Размер скидки
+      field_timer_discount
+      текст
+    Селектор старой цены
+      field_timer_discount_oldprice
+      текст
+    Селектор процента скидки
+      field_timer_discount_percent
+      текст
+
+Вставляем в TPL:
+<!--timer-->
+<div id="timer-box">
+  <div class="settings hide">
+    <?php if (!empty($content['field_timer_date'])): ?>
+      <?php print render($content['field_timer_date']); ?>
+    <?php endif; ?>
+    <?php if (!empty($content['field_timer_date_individ'])): ?>
+      <?php print render($content['field_timer_date_individ']); ?>
+    <?php endif; ?>
+      <?php if (!empty($content['field_timer_discount']) && !empty($content['field_timer_discount_oldprice'])): ?>
+        <div class="discount">
+          <div class="discount"><?php print $content['field_timer_discount']['#items'][0]['value']; ?></div>
+          <div class="selector-oldprice"><?php print $content['field_timer_discount_oldprice']['#items'][0]['value']; ?></div>
+          <?php if (!empty($content['field_timer_discount_percent'])): ?>
+            <div class="selector-percent"><?php print $content['field_timer_discount_percent']['#items'][0]['value']; ?></div>
+          <?php endif; ?>
+        </div>
+      <?php endif; ?>
+  </div>
+  <div class="timeout l" id="timeout">
+    <span class="val days"><span>00</span><i> дн.</i></span>
+    <span class="val hours"><span>00</span><i> ч.</i></span>
+    <span class="val minutes"><span>00</span><i> м.</i></span>
+    <span class="val seconds"><span>00</span><i> с.</i></span>
+  </div>
+</div>
+
+
+КАК РАБОТАЕТ:
+  таймер 1
+    скриптом сравнивается дата от-до
+  таймер 2
+    создает куку "timer_date_individ" с объектом всех нод на которой уст. сч, и пишет значения при заходе на ноду
+
+
+ЗАМЕТКА:
+!!! Индивидуальный отчет работает только в нодах. в куку пишется NID

@@ -1,0 +1,480 @@
+@charset "UTF-8";
+
+@import "mixin";
+@import "mixin-static";
+@import "variables";
+
+/* adaptive media queries */
+
+@media screen and (max-width: 959px) and (min-width: 641px) {
+  .d-menu {
+    display: none;
+  }
+  .t-menu {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 959px) {
+
+  /* common adaptive styles */
+
+  .d-hide {
+    display: block !important;
+  }
+  .t-hide {
+    display: none !important;
+  }
+
+  html {
+    width:100%;
+  }
+  .isadaptive-t {
+    margin-top:50px !important;
+  }
+  #major {
+    width:100%;
+    min-width: 320px;
+  }
+  #major {
+    .page-slideshow {
+      min-width:100%;
+      /*height:400px;*/
+
+      &.addpreviews {
+        min-height:480px;
+      }
+
+      .slider-content img {
+        width:300px !important;
+        height:auto !important;
+      }
+      .slide {
+        text-align:center;
+      }
+    }
+    .page-slideshow[data-control-mode="images"] .slider-controls {
+      bottom:20px;
+    }
+    .tab-name.s_default:after {
+      display:none;
+    }
+  }
+  #uc-cart-view-form td.subtotal {
+    padding-top:30px;
+  }
+
+  .table {
+    display: block;
+
+    .col {
+      display: inline-block;
+    }
+  }
+
+  .col {
+    border: none;
+
+    &.t1 {
+      width: 8.333%;
+    }
+    &.t2 {
+      width: 16.666%;
+    }
+    &.t3 {
+      width: 25%;
+    }
+    &.t4 {
+      width: 33.333%;
+    }
+    &.t5 {
+      width: 41.666%;
+    }
+    &.t6 {
+      width: 50%;
+    }
+    &.t7 {
+      width: 58.333%;
+    }
+    &.t8 {
+      width: 66.666%;
+    }
+    &.t9 {
+      width: 75%;
+    }
+    &.t10 {
+      width: 83.333%;
+    }
+    &.t11 {
+      width: 91.666%;
+    }
+    &.t12 {
+      width: 100%;
+    }
+
+    &.left,
+    &.right {
+      text-align:center;
+    }
+
+    img {
+
+      &.l {
+        display: block;
+        float: none;
+        width: auto;
+      }
+      &.retina {
+        display:inline;
+        min-width:inherit;
+        max-width:inherit;
+      }
+    }
+  }
+
+  .catalog-full {
+    padding:0 3px;
+  }
+  .row {
+    &.sp-20, &.sp-30, &.sp-40, &.sp-50, &.sp-60, &.sp-70, &.sp-80, &.sp-90, &.sp-100 {
+      margin-right: -15px;
+      margin-left: -15px;
+
+      > .col {
+        padding-right: 15px;
+        padding-left: 15px;
+      }
+    }
+  }
+
+  .pad-h {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .p {
+    padding:0;
+  }
+  .m {
+    margin:0;
+  }
+  .paged {
+    padding:10px;
+  }
+  .m-space {
+    padding:20px;
+    margin:10px;
+  }
+
+  .page-slideup {
+    bottom:20px;
+  }
+  /*.description {
+    font-size:10px !important;
+  }*/
+  .page-content {
+    overflow:hidden;
+  }
+  .total-rows {
+    display:none;
+  }
+
+  /*.slick-slider {
+
+    &.arrowspace {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .slick-prev, .slick-next {
+      display: none !important;
+    }
+  }*/
+
+}
+
+@media screen and (max-width: 640px) {
+
+  .t-hide {
+    display: block !important;
+  }
+  .m-hide {
+    display: none !important;
+  }
+
+  .isadaptive-m {
+    margin-top:50px !important;
+  }
+  .d-menu {
+    display: none;
+  }
+  .m-menu {
+    display: block;
+  }
+
+  .big {
+    font-size: 110%!important;
+  }
+  .bigger {
+    font-size: 130%!important;
+  }
+  .biggest {
+    font-size: 150%!important;
+  }
+
+  .col {
+
+    &.m1 {
+      width: 8.333%;
+    }
+    &.m2 {
+      width: 16.666%;
+    }
+    &.m3 {
+      width: 25%;
+    }
+    &.m4 {
+      width: 33.333%;
+    }
+    &.m5 {
+      width: 41.666%;
+    }
+    &.m6 {
+      width: 50%;
+    }
+    &.m7 {
+      width: 58.333%;
+    }
+    &.m8 {
+      width: 66.666%;
+    }
+    &.m9 {
+      width: 75%;
+    }
+    &.m10 {
+      width: 83.333%;
+    }
+    &.m11 {
+      width: 91.666%;
+    }
+    &.m12 {
+      width: 100%;
+    }
+
+  }
+
+  .page-content {
+    margin-top:0;
+  }
+
+  .tabs-nav .tab-name, .tab-link a, .tabs-menu > li a {
+    padding:20px;
+  }
+  .tabs-nav, .tabs-menu  {
+
+    &.s_default {
+
+      .tab-name {
+        margin:0;
+        border: 1px solid #ddd;
+        border-bottom: none;
+
+        &.last {
+          border-bottom: 1px solid #ddd;
+        }
+      }
+      .tab-link, > li {
+
+        a {
+          margin:0;
+          border: 1px solid #ddd;
+          border-bottom: none;
+        }
+        &.last a, &:last-of-type a {
+          border-bottom: 1px solid #ddd;
+        }
+      }
+      .first, .last, > li:first-of-type a, > li:last-of-type a {
+        @include border-radius(0);
+      }
+    }
+
+    &.s_sliding {
+
+      .tab-name {
+        margin:0;
+        border: 2px solid $lightGrey;
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+
+        + .tab-name, + .tab-link a {
+          border-top: 2px solid $lightGrey;
+        }
+
+        &.first {
+          border-left: 2px solid $lightGrey;
+          border-top: 2px solid $lightGrey;
+        }
+        &.last {
+          border-right: 2px solid $lightGrey;
+          border-bottom: 2px solid $lightGrey;
+        }
+        &.active {
+          color: #333;
+          text-decoration: none;
+          border: 2px solid $grey;
+          border-bottom-color: transparent;
+          @include border-radius(0);
+          cursor: default;
+
+          + .tab-name, + .tab-link a, > li a {
+            border-top: 2px solid $grey;
+          }
+          &.last {
+            border-bottom: 2px solid $grey;
+          }
+        }
+      }
+      .tab-link, > li {
+
+        a {
+          margin:0;
+          border: 2px solid $lightGrey;
+          border-top-color: transparent;
+          border-bottom-color: transparent;
+
+          &.active {
+            color: #333;
+            text-decoration: none;
+            border: 2px solid $grey;
+            border-bottom-color: transparent;
+            @include border-radius(0);
+            cursor: default;
+
+            + .tab-name, + .tab-link, + li {
+              border-top: 2px solid $grey;
+            }
+            &.last {
+              border-bottom: 2px solid $grey;
+            }
+          }
+        }
+
+        + .tab-name, + .tab-link a, + li a {
+          border-top: 2px solid $lightGrey;
+        }
+
+        &.first a, > li:first-of-type a {
+          border-left: 2px solid $lightGrey;
+          border-top: 2px solid $lightGrey;
+        }
+        &.last a, > li:last-of-type a {
+          border-right: 2px solid $lightGrey;
+          border-bottom: 2px solid $lightGrey;
+        }
+      }
+      .first, .last {
+        @include border-radius(0);
+      }
+    }
+  }
+  .bef-select-as-links {
+
+    a {
+
+      &.first, &.last {
+        @include border-radius(0);
+      }
+    }
+
+    &.s_sliding {
+
+      a {
+        margin:0;
+        border: 2px solid $lightGrey;
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+
+        &.active {
+          border: 2px solid $grey;
+        }
+      }
+
+      .form-type-bef-link {
+
+        &.selected + .form-type-bef-link a {
+          border-top-color: transparent;
+        }
+
+        + .selected a {
+          border-bottom-color: transparent;
+        }
+
+        &:first-of-type a {
+          border-left: 2px solid $lightGrey;
+          border-top: 2px solid $lightGrey;
+          @include border-radius(0);
+
+          &.active {
+            border-left-color: $grey;
+            border-top-color: $grey;
+          }
+        }
+        &:last-of-type a {
+          border-right: 2px solid $lightGrey;
+          border-bottom: 2px solid $lightGrey;
+          @include border-radius(0);
+
+          &.active {
+            border-right-color: $grey;
+            border-bottom-color: $grey;
+          }
+        }
+      }
+    }
+  }
+
+  .cart-content td {
+
+    &.image {
+      display:none !important;
+    }
+    &.remove {
+      min-width:25px;
+
+      &:before {
+        top:20px;
+        left:0;
+      }
+    }
+  }
+
+  .pager li.pager-ellipsis {
+    display:none !important;
+  }
+  .filters .views-exposed-form label {
+    display:none;
+  }
+  .checkout .cart-content {
+    padding:10px;
+  }
+
+  .jbox-holder {
+    width: 100% !important;
+    padding: 0;
+
+    &.compact {
+      padding: 0;
+
+      .jbox-close {
+        top: 15px;
+      }
+    }
+    .inner {
+      padding: 40px 15px;
+    }
+    .jbox-close {
+      right: 15px;
+      top: 15px;
+    }
+  }
+
+}

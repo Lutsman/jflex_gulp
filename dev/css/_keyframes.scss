@@ -1,0 +1,150 @@
+.fadeIn {
+  @include animation(fadeIn linear 0.5s);
+}
+@include keyframes(fadeIn) {
+  from  {
+    @include opacity(0);
+  }
+  to {
+    @include opacity(1);
+  }
+}
+
+.slideInRight {
+  @include animation(slideInRight linear 0.5s);
+}
+@keyframes slideInRight {
+  0% {
+    visibility: visible;
+    @include transform(translate3d(100%,0,0));
+  }
+  100% {
+    @include transform(translate3d(0,0,0));
+  }
+}
+
+.slideInLeft {
+  @include animation(slideInLeft linear 0.5s);
+}
+@keyframes slideInLeft {
+  0% {
+    visibility: visible;
+    @include transform(translate3d(-100%,0,0));
+  }
+  100% {
+    @include transform(translate3d(0,0,0));
+  }
+}
+
+.fadeInDown {
+  @include animation(fadeInDown linear 0.2s both);
+}
+@keyframes fadeInDown {
+  0% {
+    opacity:0;
+    @include transform(translate3d(0, -50%, 0));
+  }
+  100% {
+    opacity:1;
+    @include transform(none);
+  }
+}
+
+.fadeInLeft {
+  @include animation(fadeInLeft ease-in-out 0.2s both);
+}
+@keyframes fadeInLeft {
+  0% {
+    z-index: 0;
+    @include opacity(0);
+    @include transform(translate3d(-50px, 0, 0));
+  }
+  100% {
+    z-index: 1;
+    @include opacity(1);
+    @include transform(none);
+  }
+}
+
+.spinner {
+  @include animation(spinnerHide 3s linear infinite);
+}
+@include keyframes(spinnerHide) {
+  0%  {
+    @include opacity(0);
+  }
+  25% {
+    @include opacity(1);
+  }
+  50% {
+    @include opacity(1);
+  }
+  75% {
+    @include opacity(0);
+  }
+  100%  {
+    @include opacity(0);
+  }
+}
+
+
+.menuShowInLeft {
+  @include animation(menuShowInLeft linear 0.5s);
+}
+@keyframes menuShowInLeft {
+  0% {
+    visibility: visible;
+    @include opacity(0);
+    @include transform(translate3d(-20%,0,0));
+  }
+  50% {
+    @include opacity(1);
+  }
+  100% {
+    visibility: visible;
+    @include opacity(1);
+    @include transform(translate3d(0,0,0));
+  }
+}
+
+.menuCloseOutRight {
+  @include animation(menuCloseOutRight linear 0.5s);
+}
+@keyframes menuCloseOutRight {
+  0% {
+    visibility: visible;
+    /*@include opacity(1);*/
+    @include transform(translate3d(0,0,0));
+  }
+  100% {
+    @include opacity(0);
+    @include transform(translate3d(-50%,0,0));
+  }
+}
+
+.blink {
+  @include animation(blink linear 1s);
+}
+@keyframes blink {
+  0% {
+    @include opacity(0);
+  }
+  50% {
+    @include opacity(1);
+  }
+  100% {
+    @include opacity(0);
+  }
+}
+
+.rotateInfinite {
+  @include animation(rotateInfinite 1s linear infinite);
+}
+@keyframes rotateInfinite {
+  0% {
+    @include transform(rotate(0));
+  }
+  100% {
+    @include transform(rotate(360deg));
+  }
+}

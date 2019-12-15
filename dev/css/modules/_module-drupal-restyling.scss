@@ -1,0 +1,247 @@
+/* drupal restyling */
+
+div.contextual-links-wrapper {
+  z-index: 102;
+}
+input.admin-menu-search {
+  height: inherit !important;
+  line-height: inherit !important;
+}
+li a.active {
+  color: inherit;
+}
+
+#comments {
+  margin-top: 0;
+}
+
+.tocollapse,
+.blocks .block-title,
+.menu.main .trigger,
+.element-invisible,
+.menu li.expanded ul {
+  display: none;
+}
+
+.ajax-progress-throbber {
+  display: none;
+}
+
+.block {
+
+  .views-exposed-form {
+
+    label {
+      display: block;
+      padding: 0;
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: #777;
+    }
+/*
+    .views-widget label {
+      display: inline;
+      height: inherit;
+      padding-right: inherit;
+      color: inherit;
+      border: none;
+    }*/
+  }
+}
+.block-title {
+  display: block;
+  padding: 0 0 10px;
+  font-size: 14px;
+  color: #777;
+}
+.block-nodeblock .block-title {
+  display: none !important;
+}
+
+.contextual-links-wrapper {
+
+  ul.contextual-links {
+    width: inherit;
+    min-width: inherit;
+    height: inherit;
+    line-height: inherit;
+    padding: 0;
+    margin: 0;
+    font-family: Tahoma, Arial, Verdana, sans-serif !important;
+    font-size: 11px!important;
+    color: #777!important;
+    text-transform: inherit;
+
+    li {
+      display: block;
+      padding: 0;
+      margin: 0;
+    }
+    a {
+      width: inherit;
+      min-width: inherit;
+      height: inherit !important;
+      line-height: inherit !important;
+      padding: 3px 5px !important;
+      font-family: Tahoma, Arial, Verdana, sans-serif !important;
+      font-size: 11px!important;
+      color: #777!important;
+      text-transform: inherit !important;
+      border: none !important;
+
+      &:hover {
+
+      }
+    }
+  }
+
+  a.contextual-links-trigger {
+    height: 20px !important;
+    padding: 0;
+    line-height: inherit !important;
+    font-size: 0 !important;
+    text-indent: -100px;
+  }
+}
+
+.search-form {
+  margin: 0;
+}
+
+.chosen-container {
+
+  .chosen-single {
+    height: 30px;
+    line-height: 29px;
+
+    div b {
+      background-position: 0 5px;
+    }
+  }
+}
+
+.messages {
+  display: none;
+  position: relative;
+  padding-left: 40px;
+  margin: 10px 0 !important;
+  font-size: 12px;
+  background-image: none !important;
+
+  &::before {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    line-height: 13px;
+    font-family: $iconsFont;
+    font-size: 18px;
+    cursor: default;
+  }
+
+  &.status:before {
+    content: '\e71c';
+    color: #aaa;
+  }
+  &.error:before {
+    content: '\e7d5';
+    color: #ff0000;
+  }
+}
+
+.ui-datepicker-title select,
+.ui-datepicker table {
+  font-size: 12px !important;
+}
+
+.cart-content {
+
+  img {
+    width: 50px;
+    height: 50px;
+    padding: 0 !important;
+  }
+  table td {
+    vertical-align: middle !important;
+    padding: 5px;
+    font-size: 12px;
+  }
+  td .uc-price {
+    font-size: 12px;
+  }
+
+  #uc-cart-view-form .form-actions {
+    text-align: inherit;
+  }
+
+  .form-actions input {
+    margin-top:20px;
+  }
+  .qty .form-type-uc-quantity {
+    top: 10px;
+  }
+  .desc a {
+    font-size: 12px;
+  }
+}
+
+.tabs-content {
+  clear: both;
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  ul.primary {
+    float: left;
+    margin-right: 10px;
+  }
+  li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: none;
+
+    a {
+      display: inline-block;
+      padding: 5px 10px !important;
+      font-size: 12px;
+      color: #2888aa;
+      background-color: #eee !important;
+      border: 1px solid #ddd !important;
+      @include border-radius(5px);
+
+      &:hover {
+        background-color: #ddd !important;
+        border: 1px solid #aaa;
+      }
+      &.active,
+      &.active:hover {
+        background: transparent!important;
+        border: 1px solid #aaa;
+      }
+    }
+  }
+
+  .tabs {
+    padding: 0;
+    margin: 10px 0;
+    border: none;
+  }
+}
+
+.cke_show_borders .noborder {
+
+  td {
+    border: #d3d3d3 1px dotted !important;
+  }
+}
+
+.inline {
+
+  .field-label, .field-items {
+    display: inline-block;
+    vertical-align: top;
+  }
+}

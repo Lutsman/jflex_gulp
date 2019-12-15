@@ -1,0 +1,403 @@
+/* tabs */
+
+.tabs-nav, .tabs-menu {
+  float: left;
+  position: relative;
+  clear: both;
+
+  + * {
+    float: left;
+    width: 100%;
+  }
+
+  .tab-name {
+    float: left;
+    position: relative;
+    z-index: 0;
+    padding: 20px;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+
+    a {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+      text-decoration: inherit;
+      cursor: inherit;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+    }
+    &.active {
+      z-index: 1;
+      text-decoration: none;
+      cursor: default;
+    }
+  }
+  .tab-link, li {
+    float: left;
+
+    a {
+      display: block;
+      position: relative;
+      z-index: 0;
+      padding: 20px;
+      color: inherit;
+      text-decoration: none;
+      text-align: center;
+      white-space: nowrap;
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+      }
+
+      .active {
+        cursor: default;
+      }
+    }
+    &.active a {
+      z-index: 1;
+      text-decoration: none;
+      cursor: default;
+    }
+  }
+
+  &.justify {
+    display: table;
+    width: 100%;
+
+    .tab-name, .tab-link, li {
+      float: none;
+      display: table-cell;
+    }
+  }
+  &.vertical {
+    float: none;
+
+    .tab-name, .tab-link, li {
+      float: none;
+      display: block;
+    }
+  }
+  &.small {
+
+    .tab-name, .tab-link a, li a {
+      padding: 10px 15px;
+    }
+  }
+  &.buttons {
+
+    .tab-name {
+
+      &.active:after {
+        left: 50%;
+        bottom: -6px;
+        width: 0;
+        height: 0;
+        @include transform(translate3d(-50%, 0, 0));
+      }
+    }
+    .tab-link, li  {
+
+      &.active a:after {
+        left: 48%;
+        bottom: -6px;
+        width: 0;
+        height: 0;
+      }
+    }
+  }
+}
+
+.tabs-menu {
+  list-style: none;
+}
+.content-data .tabs-menu {
+  padding-left: 0;
+
+  li {
+    margin-bottom: 0;
+  }
+}
+
+.bef-select-as-links {
+  display: table;
+  position: relative;
+  width: 100%;
+  clear: both;
+
+  a {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    z-index: 0;
+    padding: 20px;
+    line-height: 14px;
+    color: #444;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    @include linearGradient(#eee, #ddd);
+    cursor: pointer;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 100%;
+    }
+
+    &:hover {
+      z-index: 1;
+      text-decoration: none;
+      @include linearGradient(#e5e5e5, #d5d5d5);
+    }
+
+    &.first {
+      @include border-radius(3px 0 0 3px);
+    }
+    &.last {
+      /*border: none;*/
+      @include border-radius(0 3px 3px 0);
+    }
+    &.active {
+      color: #fff;
+      text-decoration: none;
+      text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+      @include linearGradient(#444, #555);
+      @include box-shadow(inset 0 3px 5px rgba(0, 0, 0, 0.8));
+      cursor: default;
+
+      &:after {
+        display: block;
+        position: absolute;
+        left: 48%;
+        bottom: -6px;
+        top: inherit;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 5px 0 5px;
+        border-color: #555 transparent transparent transparent;
+      }
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+        @include linearGradient(#444, #555);
+        @include box-shadow(inset 0 3px 5px rgba(0, 0, 0, 0.8));
+        cursor: default;
+      }
+    }
+  }
+  .form-type-bef-link {
+    display: inline-block;
+  }
+}
+.form-item-edit-field-product-marker-tid-all {
+  display: none !important;
+}
+.views-exposed-widgets .bef-select-as-links {
+  margin-bottom: 50px;
+}
+
+
+
+
+/* option styles */
+.tabs-nav, .tabs-menu  {
+
+  &.s_default {
+
+    .tab-name {
+      color: #444;
+      background-color: #eee;
+      border: 1px solid #ddd;
+      border-right: none;
+
+      &.first {
+        border-left: 1px solid #ddd;
+      }
+      &.last {
+        border-right: 1px solid #ddd;
+      }
+      &.active {
+        background-color: transparent;
+        border-bottom-color: transparent;
+      }
+    }
+    .tab-link, li {
+
+      a {
+        color: #444;
+        background-color: #eee;
+        border: 1px solid #ddd;
+        border-right: none;
+
+        &.active {
+          background-color: transparent;
+          border-bottom-color: transparent;
+        }
+      }
+      &.first a, &:first-of-type a {
+        border-left: 1px solid #ddd;
+      }
+      &.last a, &:last-of-type a {
+        border-right: 1px solid #ddd;
+      }
+    }
+    .first, li:first-of-type a {
+      @include border-radius(3px 0 0 0);
+    }
+    .last, li:last-of-type a {
+      @include border-radius(0 3px 0 0);
+    }
+
+    &.vertical {
+
+      .tab-name {
+        &.last {
+          border-right: none;
+        }
+      }
+      .tab-link, li {
+        &.last a, &:last-of-type a {
+          border-right: none;
+        }
+      }
+    }
+    &.buttons {
+
+      .tab-name, .tab-link a, li a {
+        border-top: none;
+        border-bottom: 0;
+        border-left: 0;
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
+        @include linearGradient(#eee, #ddd);
+
+        &:hover {
+          @include linearGradient(#e5e5e5, #d5d5d5);
+        }
+
+        &.active {
+          color: #fff;
+          text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+          @include linearGradient(#444, #555);
+          @include box-shadow(inset 0 3px 5px rgba(0, 0, 0, 0.8));
+
+          &:after {
+            border-style: solid;
+            border-width: 6px 5px 0 5px;
+            border-color: #555 transparent transparent transparent;
+          }
+          &:hover {
+            color: #fff;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+            @include linearGradient(#444, #555);
+            @include box-shadow(inset 0 3px 5px rgba(0, 0, 0, 0.8));
+          }
+        }
+      }
+      .first, li:first-of-type a {
+        @include border-radius(3px 0 0 3px);
+      }
+      .last, li:last-of-type a {
+        border: none;
+        @include border-radius(0 3px 3px 0);
+      }
+    }
+  }
+
+  &.s_sliding {
+    border: 1px solid $lightGrey;
+    @include border-radius(3px);
+
+    .tab-name, .tab-link a, li a {
+      padding: 15px 40px;
+      margin: -1px;
+      font-size: 14px;
+      font-family: $gothamProMed;
+      color: $fontColorDescription;
+      text-decoration: underline;
+      border: 2px solid transparent;
+      @include border-radius(3px);
+
+      &.active {
+        color: #333;
+        text-decoration: none;
+        border-color: $grey;
+      }
+    }
+  }
+}
+
+.bef-select-as-links {
+
+  &.s_sliding {
+   /* display: block;
+    border: 1px solid $lightGrey;
+    @include border-radius(3px);*/
+
+    a {
+      padding: 15px 40px;
+      margin: -1px;
+      font-size: 14px;
+      font-family: $gothamProMed;
+      color: $fontColorDescription;
+      text-decoration: underline;
+      background: transparent;
+      border: 2px solid transparent;
+      @include border-radius(3px);
+
+      &:hover {
+        text-shadow: none;
+        background: transparent;
+        @include box-shadow(none);
+      }
+
+      &.active {
+        color: #333;
+        text-decoration: none;
+        text-shadow: none;
+        background: transparent;
+        border-color: $grey;
+        @include box-shadow(none);
+
+        &::after {
+          display: none;
+        }
+
+        &:hover {
+          color: #333;
+          text-shadow: none;
+          background: transparent;
+          @include box-shadow(none);
+        }
+      }
+
+    }
+
+    > .form-item {
+      border: 1px solid $lightGrey;
+      @include border-radius(3px);
+    }
+
+    .form-type-bef-link {
+      display: block;
+      float: left;
+    }
+  }
+}

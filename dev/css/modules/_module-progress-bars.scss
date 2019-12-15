@@ -1,0 +1,63 @@
+/* progress bars */
+
+.j_progress {
+  position:relative;
+  width:100%;
+  height:28px;
+  line-height:28px;
+  overflow:hidden;
+  background-color: #fafafa;
+  @include box-shadow(inset 0 5px 5px rgba(0, 0, 0, 0.15));
+
+  &.horizontal {
+
+    &.big {
+      height:45px;
+      line-height:45px;
+
+      .j_bar {
+        height:45px;
+        line-height:45px;
+      }
+    }
+    &.small {
+      height:5px;
+      line-height:5px;
+
+      .j_bar {
+        height:5px;
+        line-height:5px;
+      }
+    }
+  }
+  &.vertical {
+    width:28px;
+    height:auto;
+    min-height:100px;
+
+    &.big {
+      width:40px;
+      height:auto;
+    }
+    &.small {
+      width:5px;
+      height:auto;
+    }
+
+    .j_bar {
+      float:none;
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:100%;
+      line-height:unset;
+    }
+  }
+
+  .j_bar {
+    display:block;
+    float:left;
+    background-color:#eee;
+    @include box-shadow(none);
+  }
+}
