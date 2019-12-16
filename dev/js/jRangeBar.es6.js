@@ -1,7 +1,3 @@
-/*sliding counter*/
-//TODO  touch events
-
-
 'use strict';
 
 (function (factory) {
@@ -16,12 +12,20 @@
     factory(jQuery);
   }
 }(function ($) {
+  let counter = 0;
 
   class JRangeBarController {
     constructor(options) {
       this.parentEl = options.parent;
-      this.minInput = options.min;
-      this.maxInput = options.max;
+      this.minInput = options.minInput;
+      this.maxInput = options.maxInput;
+      this.displayMin = options.displayMin; //elements to display minimum current value
+      this.displayMax = options.displayMax; //elements to display maximum current value
+      this.min = options.min || 0;
+      this.max = options.max;
+      this.minCurrent = options.minCurrent || options.min || 0;
+      this.maxCurrent = options.maxCurrent || options.max;
+      this.dualMode = options.dualMode || false;
       this.userRanges = options.ranges;
       this.addMethod = options.addMethod || null;
       this.ranges = [];
@@ -47,22 +51,41 @@
     }
 
     init() {
-      this.$parent = $(this.parentEl);
-      this.$minInput = $(this.minInput);
-      this.$maxInput = $(this.maxInput);
-
-      this.minInputValCached = this.baseMin = +this.$minInput.val();
-      this.maxInputValCached = this.baseMax = +this.$maxInput.val();
-
       this.events.startEvent = this.events.startEventArr.join('.jRangeBar-' + counter + ' ') + '.jRangeBar-' + counter;
       this.events.moveEvent = this.events.moveEventArr.join('.jRangeBar-' + counter + ' ') + '.jRangeBar-' + counter;
       this.events.endEvent = this.events.endEventArr.join('.jRangeBar-' + counter + ' ') + '.jRangeBar-' + counter;
 
+      this.bindElements();
+      this.updateDisplayElements();
       this.renderRangeBar();
       this.setupDimentions();
       this.parseRanges();
       this.bindHandlers();
       this.attachHandlers();
+      this.updateSlider();
+
+      //just in case to recalculate slider after styles load
+      setTimeout(this.reinitSlider.bind(this), 3000);
+    }
+
+    bindElements() {
+      this.$parent = $(this.parentEl);
+      this.$minInput = $(this.minInput);
+      this.$maxInput = $(this.maxInput);
+      this.$displayMin = $(this.displayMin);
+      this.$displayMax = $(this.displayMax);
+      this.$body = $('body');
+      this.$window = $(window);
+    }
+
+    updateDisplayElements(notInputs) {
+      if (!notInputs) {
+        this.$minInput.val(this.minCurrent);
+        this.$maxInput.val(this.maxCurrent);
+      }
+
+      this.$displayMin.text(this.minCurrent);
+      this.$displayMax.text(this.maxCurrent);
     }
 
     bindHandlers() {
@@ -87,11 +110,11 @@
       $('body').on(this.events.startEvent, minCounterId + ', ' + maxCounterId, this._onMouseDown);
 
       this.$minInput
-        .add(this.$maxInput)
-        .on({
-          'input': this._onInput,
-          'change': this._onChange
-        });
+          .add(this.$maxInput)
+          .on({
+            'input': this._onInput,
+            'change': this._onChange
+          });
 
       this.$wrapper.on({
         [this.events.updateUnit]: this._onUnitUpdate,
@@ -101,22 +124,22 @@
         [this.events.refresh]: this._onRefresh
       });
 
-      $(window).on('resize', this._onRefresh);
+      this.$window.on('resize', this._onRefresh);
     }
 
     detachHandlers() {
       this.$minCounter
-        .add(this.$maxCounter)
-        .off({
-          [this.events.startEvent]: this._onMouseDown
-        });
+          .add(this.$maxCounter)
+          .off({
+            [this.events.startEvent]: this._onMouseDown
+          });
 
       this.$minInput
-        .add(this.$maxInput)
-        .off({
-          'input': this._onInput,
-          'change': this._onChange
-        });
+          .add(this.$maxInput)
+          .off({
+            'input': this._onInput,
+            'change': this._onChange
+          });
 
       this.$wrapper.off({
         [this.events.updateUnit]: this._onUnitUpdate,
@@ -126,11 +149,11 @@
         [this.events.refresh]: this._onRefresh
       });
 
-      $(window).off('resize', this._onRefresh);
+      this.$window.off('resize', this._onRefresh);
     }
 
     renderRangeBar() {
-      let $wrapper = this.$wrapper = $(this.tpl);
+      const $wrapper = this.$wrapper = $(this.tpl);
       this.$inner = $wrapper.find('.jrangebar-inner');
       this.$minCounter = $wrapper.find('.min');
       this.$maxCounter = $wrapper.find('.max');
@@ -138,6 +161,10 @@
       this.$minCounter.attr('id', 'jrangebar-min-' + counter);
       this.$maxCounter.attr('id', 'jrangebar-max-' + counter);
       counter++;
+
+      if (!this.dualMode) {
+        this.$minCounter.hide();
+      }
 
       if (this.addMethod) {
         this.addMethod(this.$parent, $wrapper);
@@ -147,13 +174,13 @@
     }
 
     onMouseDown(e) {
-      let target = e.currentTarget;
-      let innerCoords = this.$inner[0].getBoundingClientRect();
-      let clientX = this.getPosition(e);
+      const target = e.currentTarget;
+      const innerCoords = this.$inner[0].getBoundingClientRect();
+      const clientX = this.getPosition(e);
 
       e.preventDefault();
 
-      let $target = this.$target = $(target);
+      const $target = this.$target = $(target);
 
       if ($target.is(this.$minCounter)) {
         this.shiftX = clientX - innerCoords.left;
@@ -161,14 +188,12 @@
         this.shiftX = innerCoords.right - clientX;
       } else {
         return;
-        //this.shiftX = 0;
       }
 
-      //console.dir(e);
-      //console.log(this.shiftX);
-
-      $('body').on(this.events.moveEvent, this._onMouseMove);
-      $('body').on(this.events.endEvent, this._onMouseUp);
+      this.$body.on({
+        [this.events.moveEvent]: this._onMouseMove,
+        [this.events.endEvent]: this._onMouseUp,
+      });
     }
 
     onMouseMove(e) {
@@ -188,7 +213,7 @@
       if ($target.is(this.$minCounter)) {
 
         let left = clientX - wrapperCoords.left - shiftX;
-        let maxLeft = wrapperWidth - minCounterWidth - maxCounterWidth - parseFloat(this.$inner.css('right')) - 1;
+        let maxLeft = wrapperWidth - minCounterWidth - maxCounterWidth - parseFloat(this.$inner.css('right'));
 
         if (left < 0) {
           left = 0;
@@ -199,7 +224,7 @@
         this.$inner.css('left', left + 'px');
       } else if ($target.is(this.$maxCounter)) {
         let right = wrapperCoords.right - clientX - shiftX;
-        let maxRight = wrapperWidth - minCounterWidth - maxCounterWidth - parseFloat(this.$inner.css('left')) - 1;
+        let maxRight = wrapperWidth - minCounterWidth - maxCounterWidth - parseFloat(this.$inner.css('left'));
 
         if (right < 0) {
           right = 0;
@@ -212,27 +237,27 @@
     }
 
     onMouseUp() {
-      $('body').off({
+      this.$body.off({
         [this.events.moveEvent]: this._onMouseMove,
-        [this.events.endEvent]: this._onMouseUp
+        [this.events.endEvent]: this._onMouseUp,
       });
       this.$target = null;
     }
 
     onInput(e) {
-      let $target = this.$target = $(e.target);
-      let val = +$target.val();
+      const $target = $(e.target);
+      let val = parseFloat($target.val());
       let maxVal;
       let minVal;
 
       if (!this.isNumeric(val)) return;
 
       if ($target.is(this.$minInput)) {
-        maxVal = this.maxInputValCached;
-        minVal = this.baseMin;
+        maxVal = this.maxCurrent;
+        minVal = this.min;
       } else if ($target.is(this.$maxInput)) {
-        maxVal = this.baseMax;
-        minVal = this.minInputValCached;
+        maxVal = this.max;
+        minVal = this.minCurrent;
       }
 
       if (val > maxVal) {
@@ -242,14 +267,12 @@
       }
 
       if ($target.is(this.$minInput)) {
-        this.minInputValCached = val;
+        this.minCurrent = val;
       } else if ($target.is(this.$maxInput)) {
-        this.maxInputValCached = val;
+        this.maxCurrent = val;
       }
 
       this.unitToPixel();
-
-      this.$target = null;
     }
 
     onChange(e) {
@@ -257,17 +280,16 @@
     }
 
     onRefresh() {
-      this.setupDimentions();
-      this.parseRanges();
+      this.reinitSlider();
     }
 
     refreshInput(e) {
       let $target = $(e.target);
 
       if ($target.is(this.$minInput)) {
-        $target.val(this.minInputValCached);
+        $target.val(this.minCurrent);
       } else if ($target.is(this.$maxInput)) {
-        $target.val(this.maxInputValCached);
+        $target.val(this.maxCurrent);
       }
     }
 
@@ -276,15 +298,17 @@
     }
 
     onUnitUpdate(silent) {
-      this.minInputValCached = +this.$minInput.val();
-      this.maxInputValCached = +this.$maxInput.val();
+      const minVal = parseInt(this.$minInput.val());
+      const maxVal = parseInt(this.$maxInput.val());
 
+      this.minCurrent = this.isNumeric(minVal) ? minVal : this.minCurrent;
+      this.maxCurrent = this.isNumeric(maxVal) ? maxVal : this.maxCurrent;
       this.unitToPixel(silent);
     }
 
     pixelToUnit(silentProcess) {
-      let left = parseFloat(this.$inner.css('left'));
-      let right = parseFloat(this.$inner.css('right'));
+      const left = parseFloat(this.$inner.css('left'));
+      const right = parseFloat(this.$inner.css('right'));
       let minVal = 0;
       let maxVal = 0;
 
@@ -296,18 +320,13 @@
         maxVal = Math.round((this.fullPixelRange - right) * this.unitInPixel);
       }
 
-      this.minInputValCached = minVal;
-      this.maxInputValCached = maxVal;
-
-      this.$minInput.val(minVal);
-      this.$maxInput.val(maxVal);
+      this.minCurrent = minVal + this.min;
+      this.maxCurrent = maxVal + this.min;
+      this.updateDisplayElements();
 
       if (silentProcess) return;
 
-      this.$wrapper
-        .add(this.$minInput)
-        .add(this.$maxInput)
-        .trigger(this.events.change);
+      this.$wrapper.trigger(this.events.change);
     }
 
     unitToPixel(silentProcess) {
@@ -318,23 +337,21 @@
         left = this.getCompoundRange('left', 'pixel');
         right = this.getCompoundRange('right', 'pixel');
       } else {
-        left = this.baseMin / this.unitInPixel;
-        right = this.fullPixelRange - this.baseMax / this.unitInPixel;
+        left = (this.minCurrent - this.min) / this.unitInPixel;
+        right = this.fullPixelRange - (this.maxCurrent - this.min) / this.unitInPixel;
       }
 
       this.$inner.css('left', left + 'px');
       this.$inner.css('right', right + 'px');
+      this.updateDisplayElements(true);
 
       if (silentProcess) return;
 
-      this.$wrapper
-        .add(this.$minInput)
-        .add(this.$maxInput)
-        .trigger(this.events.change);
+      this.$wrapper.trigger(this.events.change);
     }
 
     parseRanges() {
-      let prevUnitSum = this.baseMin;
+      let prevUnitSum = this.minCurrent;
       let prevPixelSum = 0;
 
       if (!this.userRanges || !$.isArray(this.userRanges)) return;
@@ -346,20 +363,16 @@
         let currUnitRange = this.userRanges[i].unitRange;
         let currRange = {};
 
-        /*if (!isNumeric(currPixelRange) || !isNumeric(currUnitRange)) {
-         return false;
-         }*/
-
         if (typeof currPixelRange === 'string' && ~currPixelRange.lastIndexOf('%')) {
-          currPixelRange = this.fullPixelRange * parseFloat(currPixelRange) / 100; //+ prevPixelSum;
+          currPixelRange = this.fullPixelRange * parseFloat(currPixelRange) / 100;
         } else {
           currPixelRange = parseInt(currPixelRange);
         }
 
         if (typeof currUnitRange === 'string' && ~currUnitRange.lastIndexOf('%')) {
-          currUnitRange = this.fullUnitRange * parseFloat(currUnitRange) / 100 + this.baseMin;
+          currUnitRange = this.fullUnitRange * parseFloat(currUnitRange) / 100;
         } else {
-          currUnitRange = parseInt(currUnitRange);
+          currUnitRange = parseInt(currUnitRange) - this.min;
         }
 
         currRange.pixelRange = currPixelRange;
@@ -372,7 +385,7 @@
 
       if (this.fullUnitRange !== prevUnitSum) {
         this.ranges.push({
-          unitRange: this.baseMax,
+          unitRange: this.fullUnitRange,
           pixelRange: this.fullPixelRange
         });
       }
@@ -380,32 +393,28 @@
 
     getCompoundRange(direction, outputUnit) {
       let prevPixelRange = 0;
-      let prevUnitRange = this.baseMin;
+      let prevUnitRange = 0;
       let sourceUnit = 0;
       let result = 0;
 
       if (direction === 'left') {
         if (outputUnit === 'pixel') {
-          sourceUnit = this.minInputValCached - this.baseMin;
+          sourceUnit = this.minCurrent - this.min;
         } else if (outputUnit === 'unit') {
           sourceUnit = parseFloat(this.$inner.css('left'));
         }
       } else if (direction === 'right') {
         if (outputUnit === 'pixel') {
-          sourceUnit = this.maxInputValCached - this.baseMin;
+          sourceUnit = this.maxCurrent - this.min;
         } else if (outputUnit === 'unit') {
           sourceUnit = this.fullPixelRange - parseFloat(this.$inner.css('right'));
         }
       }
 
       for (let i = 0; i < this.ranges.length; i++) {
-        let currPixelRange = this.ranges[i].pixelRange;
-        let currUnitRange = this.ranges[i].unitRange;
-        let currUnitInPixel = 0;
-
-        currPixelRange = currPixelRange - prevPixelRange;
-        currUnitRange = currUnitRange - prevUnitRange;
-        currUnitInPixel = currUnitRange / currPixelRange;
+        const currPixelRange = this.ranges[i].pixelRange - prevPixelRange;
+        const currUnitRange = this.ranges[i].unitRange - prevUnitRange;
+        const currUnitInPixel = currUnitRange / currPixelRange;
 
         if (outputUnit === 'pixel') {
           if (sourceUnit > currUnitRange) {
@@ -436,12 +445,12 @@
     }
 
     getDimentions() {
-      let fullUnitRange = this.baseMax - this.baseMin;
-      let wrapperWidth = this.$wrapper.width();
-      let minCounterWidth = this.$minCounter.outerWidth();
-      let maxCounterWidth = this.$maxCounter.outerWidth();
-      let fullPixelRange = wrapperWidth - minCounterWidth - maxCounterWidth - 1; // - 2;
-      let unitInPixel = fullUnitRange / fullPixelRange;
+      const fullUnitRange = this.max - this.min;
+      const wrapperWidth = this.$wrapper.width();
+      const minCounterWidth = this.dualMode ? this.$minCounter.outerWidth() : 0;
+      const maxCounterWidth = this.$maxCounter.outerWidth();
+      const fullPixelRange = wrapperWidth - minCounterWidth - maxCounterWidth;
+      const unitInPixel = fullUnitRange / fullPixelRange;
 
       return {
         unitRange: fullUnitRange,
@@ -460,7 +469,7 @@
       this.fullPixelRange = ranges.pixelRange;
       this.unitInPixel = ranges.unitInPixel;
       this.wrapperWidth = ranges.wrapperWidth;
-      this.minCounterWidth = ranges.minCounterWidth;
+      this.minCounterWidth = this.dualMode ? ranges.minCounterWidth : 0;
       this.maxCounterWidth = ranges.maxCounterWidth;
     }
 
@@ -476,9 +485,9 @@
         pageCoordinate = e.originalEvent['client' + ucCoordinate];
       }
       else if (
-        e.originalEvent.touches &&
-        e.originalEvent.touches[0] &&
-        typeof e.originalEvent.touches[0]['client' + ucCoordinate] !== 'undefined'
+          e.originalEvent.touches &&
+          e.originalEvent.touches[0] &&
+          typeof e.originalEvent.touches[0]['client' + ucCoordinate] !== 'undefined'
       ) {
         pageCoordinate = e.originalEvent.touches[0]['client' + ucCoordinate];
       }
@@ -487,7 +496,17 @@
       }
 
       return pageCoordinate; // - rangePos;
-    };
+    }
+
+    updateSlider(silent) {
+      this.unitToPixel(silent);
+    }
+
+    reinitSlider() {
+      this.setupDimentions();
+      this.parseRanges();
+      this.updateSlider();
+    }
 
     isNumeric(n) {
       return !isNaN(parseFloat(n)) && isFinite(n);
@@ -497,8 +516,6 @@
       return this;
     }
   }
-
-  let counter = 0;
 
   $.fn.jRangeBar = function () {
     let _ = this;
@@ -519,4 +536,3 @@
     return _;
   };
 }));
-
